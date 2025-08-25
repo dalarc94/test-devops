@@ -94,23 +94,25 @@
 pipeline {
     agent any
     stages {
-        stage('build 1'){
+        stage('build 1') {
             steps {
                 echo 'Building... 1.1'
                 echo 'Building... 1.2'
             }
         }
-        stage('build 2'){
-            stage('AA'){
-                steps {
-                    echo 'Building... 2.1'
-                    echo 'Building... 2.2'
+        stage('build 2') {
+            stages {
+                stage('AA') {
+                    steps {
+                        echo 'Building... 2.1'
+                        echo 'Building... 2.2'
+                    }
                 }
-            }
-            stages('BB'){
-                steps {
-                    echo 'Building... 3.1'
-                    echo 'Building... 3.2'
+                stage('BB') {
+                    steps {
+                        echo 'Building... 3.1'
+                        echo 'Building... 3.2'
+                    }
                 }
             }
         }
