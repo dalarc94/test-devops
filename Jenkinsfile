@@ -1,4 +1,4 @@
-pipeline {
+/* pipeline {
     agent any
     stages {
         stage('Etapa de construccion / build de aplicacion') {
@@ -86,6 +86,31 @@ pipeline {
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig-docker']){
                      sh "kubectl -n devops set image deployments backend-node-devops backend-node-devops=localhost:8082/backend-node-devops:${BUILD_NUMBER}"
+                }
+            }
+        }
+    }
+} */
+pipeline {
+    agent any
+    stages {
+        stage('build 1'){
+            steps {
+                echo 'Building... 1.1'
+                echo 'Building... 1.2'
+            }
+        }
+        stage('build 2'){
+            stage('AA'){
+                steps {
+                    echo 'Building... 2.1'
+                    echo 'Building... 2.2'
+                }
+            }
+            stages('BB'){
+                steps {
+                    echo 'Building... 3.1'
+                    echo 'Building... 3.2'
                 }
             }
         }
